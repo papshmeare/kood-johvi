@@ -1,4 +1,6 @@
-# Vanilla javascript
+# Vanilla JavaScript
+
+[Back to main readme](../README.md)
 
 Add IDs is to DOM elements if necessary.
 Add your script to the script tag at the end of pulse-johvi-employees.html
@@ -14,7 +16,7 @@ Add your script to the script tag at the end of pulse-johvi-employees.html
 		body: JSON.stringify({'field': 'value'})
 	});
 
-### Convert HTTP response to JS object 
+### Convert HTTP response to JS object
 	const data = await response.json();
 
 ### Get params from URL

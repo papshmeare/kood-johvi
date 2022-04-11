@@ -1,5 +1,7 @@
 # jQuery based example
 
+[Back to main readme](../README.md)
+
 JS code can be added to the `script.js` in the project folder to keep everything in one place.
 This example includes a few functions to get you started:
 * a function to fetch the auth token on page load. This token expires in 30 minutes, so regular refetching the token and updating headers is necessary (can either compare timestamps or refetch when requests fail)
