@@ -4,12 +4,18 @@ Choose your poison!
 ---
 
 Backstory
+
 We have an application that allows us to manage Employees and Project within our company. Both Employees and Projects have their own profile pages, where all the known information about a respective Employee or Project is shown. This information includes the usual suspects (e.g. for an Employee: name, start date at the company, last profile modification date; for a Project: name, start date, last modification date; other metadata) as well as relational data. Relational data can include e.g. all the Projects where a given Employee is included in, or all the Employees that are currently in the team for a given Project. We are interested in bringing Employees together with Projects.
+
 This task is to add a new section (Suggestions) to the Employee profile page. The section will suggest Projects that the Employee could participate in.
 Description
+
 Every Project has Technologies, which are either required or needed to carry out the project. Every Employee has Skills, which an Employee can contribute to a Project.
+
 Note that a Project's Technologies are a vetted list of items that are agreed upon beforehand. An Employee's Skills list is a mix of handpicked and freely added items (as in every Employee can list whatever skills they have).
+
 Acceptance criteria
+
 Given an Employee with eid=<id>, find and list the Projects which have Technologies that match with the Skills defined for the Employee (i.e. at least one case where skill=technology), meaning the Employee is potentially suited for these Projects.
 
 ---
