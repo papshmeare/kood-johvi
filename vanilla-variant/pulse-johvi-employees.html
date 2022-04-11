@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#000000">
   <meta name="description" content="Web site created using create-react-app">
-  <title>Proekspert Pulse</title>
-  <link rel="canonical" href="https://intra.proekspert.ee/pulse-johvi/challenges">
   <link rel="stylesheet" href="style.css">
-
+  <title>Proekspert Pulse</title>
 </head>
 <body style=padding-right:17px;overflow:hidden>
 <div id="root" aria-hidden="true">
@@ -353,6 +351,11 @@
                         style=word-break:break-word>Title Placeholder</h3>
                   </div>
                   <div class="jss186" id="roles">
+                    <div class="MuiChip-root jss91 MuiChip-outlined jss92">
+                      <span class="MuiChip-label">
+                        <p class="MuiTypography-root MuiTypography-body1" style=font-weight:600;font-size:14px;line-height:unset>FRONTEND DEVELOPER</p>
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div class="MuiBox-root jss138">
@@ -469,125 +472,10 @@
 
 
 
-<div id="templateRole">
-	<div class="MuiChip-root jss91 MuiChip-outlined jss92" id="Front-End Developer">
-		<span class="MuiChip-label">
-			<p class="MuiTypography-root MuiTypography-body1" style=font-weight:600;font-size:14px;line-height:unset>ROLE</p>
-		</span>
-	</div>
-</div>
-<div id="templateMatch">
-	<div class="MuiBox-root jss94">
-		<div class="MuiBox-root jss95">
-			<h5 class="MuiTypography-root MuiTypography-h5"><div style="background-color: COLOR;width: 16px;height: 16px;display: inline-block;border-radius: 50%;"></div> PROJECT</h5>
-		</div>
-		<p class="MuiTypography-root jss192 MuiTypography-body1" id="skills">SKILLS</p>
-	</div>
-</div>
 <script>
 
-// ---------- BE -----------
+// Add your code here
 
-let savedToken = undefined;
-
-async function getToken() {
-	if (savedToken) {
-		return savedToken;
-	}
-
-	const response = await fetch('https://intra.proekspert.ee/pulse-johvi/auth', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({'username': 'user', 'password': 'user'})
-	});
-	const data = await response.json();
-	savedToken = data.token;
-	return savedToken;
-}
-
-async function getEmployee(employeeId) {
-	const token = await getToken();
-	const response = await fetch('https://intra.proekspert.ee/pulse-johvi/api/employees/' + employeeId + '?expand=skills', {
-		headers: {
-			'Content-Type': 'application/json',
-			'Authorization': 'Bearer ' + token
-		}
-	});
-	return await response.json();	
-}
-
-async function getProjects() {
-	const token = await getToken();
-	const response = await fetch('https://intra.proekspert.ee/pulse-johvi/api/projects', {
-		headers: {
-			'Content-Type': 'application/json',
-			'Authorization': 'Bearer ' + token
-		}
-	});
-	return await response.json();	
-}
-
-// ---------- UI -----------
-
-function getRoleElement(role) {
-	const tmpl = document.getElementById('templateRole');
-	return htmlToElement(tmpl.innerHTML.replace('ROLE', role));
-}
-
-function getMatchElement(match, maxTechMatches) {
-	const tmpl = document.getElementById('templateMatch');
-	const matchCount = match.matchingTechnologies.length;
-	console.log(match, maxTechMatches, matchCount);
-	const color = matchCount === maxTechMatches ? '#8c8' : matchCount === maxTechMatches - 1 ? '#cc8' : '#ccc';
-	return htmlToElement(tmpl.innerHTML.replace('COLOR', color).replace('PROJECT', match.project).replace('SKILLS', match.matchingTechnologies.join(", ")));
-}
-
-function htmlToElement(html) {
-    var template = document.createElement('template');
-    template.innerHTML = html.trim();
-    return template.content.firstChild;
-}
-
-// ---------- OTHER -----------
-
-function getEmployeeIdFromUrl() {
-	const urlParams = new URLSearchParams(window.location.search);
-	return urlParams.get('eId');
-}
-
-function findTechnologyMatches(project, skillNames) {
-	return project.technologies ? project.technologies.filter((skill) => skillNames.includes(skill)) : [];
-}
-
-async function main() {
-	const employeeId = getEmployeeIdFromUrl();
-
-	const employee = await getEmployee(employeeId);
-	console.log(employee);
-	document.getElementById('person_name').innerText = employee.name;
-	document.getElementById('about_me').innerText = employee.about;
-	document.getElementById('title').innerText = employee.title;
-	const roleElements = employee.roles.map(getRoleElement);
-	document.getElementById('roles').replaceChildren(...roleElements);
-	const skillNames = employee.skills.map((skill) => skill.name);
-	document.getElementById('skills').innerText = employee.skills.map((skill) => skill.name).join(", ");
-
-	const projects = await getProjects();
-	console.log(projects);
-	
-	const matches = projects
-		.map((project) => {return {project: project.name, matchingTechnologies: findTechnologyMatches(project, skillNames)}})
-		.filter((project) => project.matchingTechnologies.length);
-	matches.sort((a, b) => b.matchingTechnologies.length - a.matchingTechnologies.length);
-	console.log(matches);
-	const maxTechMatches = Math.max(...matches.map(a => a.matchingTechnologies.length), 0);
-	const matchElements = matches.map(match => getMatchElement(match, maxTechMatches));
-	document.getElementById('suggestions').replaceChildren(...matchElements);
-}
-
-main();
 </script>
 </body>
 </html>
