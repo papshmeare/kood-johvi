@@ -41,7 +41,7 @@ Given an Employee with eid=\<id\>, find and list the Projects which have Technol
 | Jira | https://intra.proekspert.ee/jira/ |
 | Demo UI | https://intra.proekspert.ee/pulse-johvi |
 | API location | https://intra.proekspert.ee/pulse-johvi/api/ |
-| API documentation | https://intra.proekspert.ee/pulse-johvi/swagger-ui.html |
+| API documentation | https://intra.proekspert.ee/pulse-johvi/api-doc |
 
 Access: user:user
 
