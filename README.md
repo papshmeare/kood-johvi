@@ -2,11 +2,11 @@
 
 Choose your poison!
 
-| Variant | Directory |
-| ------- | --------- |
-| jQuery | jquery-variant |
-| React.js | react-variant |
-| Plain old JavaScript | vanilla-variant |
+| Variant              | Directory       | Readme                              |
+| -------------------- | --------------- | ----------------------------------- |
+| jQuery               | jquery-variant  | [here](./jquery-variant/README.md)  |
+| React.js             | react-variant   | [here](./react-variant/README.md)   |
+| Plain old JavaScript | vanilla-variant | [here](./vanilla-variant/README.md) |
 
 ## Table of contents
 
@@ -36,14 +36,14 @@ Given an Employee with eid=\<id\>, find and list the Projects which have Technol
 
 ## Links
 
-| Link | URL |
-| ---- | --- |
-| Jira | https://intra.proekspert.ee/jira/ |
-| Demo UI | https://intra.proekspert.ee/pulse-johvi |
-| API location | https://intra.proekspert.ee/pulse-johvi/api/ |
+| Link              | URL                                             |
+| ----------------- | ----------------------------------------------- |
+| Jira              | https://intra.proekspert.ee/jira/               |
+| Demo UI           | https://intra.proekspert.ee/pulse-johvi         |
+| API location      | https://intra.proekspert.ee/pulse-johvi/api/    |
 | API documentation | https://intra.proekspert.ee/pulse-johvi/api-doc |
 
-Access: user:user
+Access: **user:user**
 
 ## Authorisation
 
