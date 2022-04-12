@@ -1,4 +1,4 @@
-# Vanilla JavaScript
+# Vanilla JavaScript variant
 
 [Back to main readme](../README.md)
 

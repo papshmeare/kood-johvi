@@ -1,4 +1,4 @@
-# jQuery based example
+# jQuery based variant
 
 [Back to main readme](../README.md)
 
