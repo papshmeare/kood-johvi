@@ -1,6 +1,22 @@
+var token;
+var username = "user";
+var password = "password";
+
+function getKey(api){
+  api.post("/auth", {"username":username, "password":password}).then(data=>{
+  console.log(data)
+})
+}
+
+
+
 export class FetchWrapper {
     constructor(baseURL) {
         this.baseURL = baseURL;
+
+        if (token == ''){
+          getKey(baseURL)
+        }
     }
 
     get(endpoint) {
@@ -24,7 +40,8 @@ export class FetchWrapper {
         return fetch(this.baseURL + endpoint, {
             method,
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization" : "Bearer " + token,
             },
             body: JSON.stringify(body)
         }).then(response => response.json());
