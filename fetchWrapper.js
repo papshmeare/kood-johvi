@@ -1,6 +1,7 @@
 export class FetchWrapper {
     constructor(baseURL) {
         this.baseURL = baseURL;
+        this.token = ""
     }
 
     get(endpoint) {
