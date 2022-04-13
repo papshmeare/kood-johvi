@@ -1,6 +1,6 @@
 {
-  "short_name": "Wize",
-  "name": "Wize",
+  "short_name": "pulse-client",
+  "name": "Pulse client",
   "icons": [
     {
       "src": "favicon.ico",
