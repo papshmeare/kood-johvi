@@ -3,17 +3,21 @@ import {FetchWrapper} from "./fetchWrapper.js"
 let API = new FetchWrapper("https://intra.proekspert.ee/pulse-johvi")
 
 API.post("/auth", {"username":"user", "password":"user"}).then(data=>{
-API.token = data.token
-console.log(API.token)
+console.log("TOKEN:", data.token)
 
-let employeeData
-API.get("/api/employees/9", data.token).then(data => {
-    console.log(data)
-    employeeData = data
-    SetEmployeeData()
+const employee = API.get("/api/employees/9/?expand=skills", data.token)
+
+const projects = API.get("/api/projects/?expand=technologies", data.token)
+
+Promise.all([employee, projects]).then((values) => {
+    console.log(values)
+    SetEmployeeData(values[0])
+
 })
 
-function SetEmployeeData() {
+
+
+function SetEmployeeData(employeeData) {
     document.getElementById("person_name").innerHTML = employeeData.name
     document.getElementById("title").innerHTML = employeeData.title
     document.getElementById("about_me").innerHTML = employeeData.about    
