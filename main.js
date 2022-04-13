@@ -16,12 +16,16 @@ Promise.all([employee, projects]).then((values) => {
 })
 
 
-
 function SetEmployeeData(employeeData) {
+    let employeeSkills = [];
+    employeeData.skills.forEach(element => {
+        employeeSkills.push(element.name)
+    });
+
     document.getElementById("person_name").innerHTML = employeeData.name
     document.getElementById("title").innerHTML = employeeData.title
     document.getElementById("about_me").innerHTML = employeeData.about    
-    document.getElementById("skills").innerHTML = employeeData.skills    
+    document.getElementById("skills").innerHTML = employeeSkills
 }
 })
 
