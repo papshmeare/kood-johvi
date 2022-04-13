@@ -4,8 +4,13 @@ export class FetchWrapper {
         this.token = ""
     }
 
-    get(endpoint) {
-        return fetch(this.baseURL + endpoint)
+    get(endpoint, token) {
+        return fetch(this.baseURL + endpoint,{
+            token,
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+        })
             .then(response => response.json());
     }
 
